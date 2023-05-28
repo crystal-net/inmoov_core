@@ -20,6 +20,32 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
+set (dependencies rclcpp std_msgs sensor_msgs)
+
+add_executable(simple src/simple.cpp)
+add_executable(logger src/logger.cpp)
+
+# ament_target_dependencies(logger rclcpp std_msgs)
+
+ament_target_dependencies(simple ${dependencies})
+ament_target_dependencies(logger ${dependencies})
+
+# export information to downstream packages
+ament_export_dependencies(
+  # rosidl_default_runtime 
+  rclcpp 
+  sensor_msgs 
+  # geometry_msgs
+)
+
+install(TARGETS
+  simple
+  logger
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION lib/${PROJECT_NAME}
+)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
