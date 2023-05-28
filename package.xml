@@ -3,14 +3,13 @@
 <package format="3">
   <name>inmoov_core</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="gkemper@todo.todo">gkemper</maintainer>
-  <license>TODO: License declaration</license>
+  <description>Core ROS2 InMoov Robot System</description>
+  <maintainer email="email@todo.todo">MyName</maintainer>
+  <license>MIT</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <depend>rcl</depend>
-  <depend>cpp</depend>
+  <depend>rclcpp</depend>
   <depend>std_msgs</depend>
 
   <test_depend>ament_lint_auto</test_depend>
