@@ -19,22 +19,27 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+# find_package(node REQUIRED)
 
 set (dependencies rclcpp std_msgs sensor_msgs)
 
 add_executable(simple src/simple.cpp)
 add_executable(logger src/logger.cpp)
+add_executable(logger_class src/logger_class.cpp)
 
 # ament_target_dependencies(logger rclcpp std_msgs)
 
 ament_target_dependencies(simple ${dependencies})
 ament_target_dependencies(logger ${dependencies})
+ament_target_dependencies(logger_class ${dependencies})
 
 # export information to downstream packages
 ament_export_dependencies(
   # rosidl_default_runtime 
   rclcpp 
-  sensor_msgs 
+  sensor_msgs
+  # node
   # geometry_msgs
 )
 
