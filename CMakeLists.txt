@@ -46,6 +46,7 @@ ament_export_dependencies(
 install(TARGETS
   simple
   logger
+  logger_class
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME}
