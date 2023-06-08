@@ -27,12 +27,18 @@ set (dependencies rclcpp std_msgs sensor_msgs)
 add_executable(simple src/simple.cpp)
 add_executable(logger src/logger.cpp)
 add_executable(logger_class src/logger_class.cpp)
+add_executable(publisher_class src/publisher_class.cpp)
+add_executable(subscriber_class src/subscriber_class.cpp)
+add_executable(system src/system.cpp)
 
 # ament_target_dependencies(logger rclcpp std_msgs)
 
 ament_target_dependencies(simple ${dependencies})
 ament_target_dependencies(logger ${dependencies})
 ament_target_dependencies(logger_class ${dependencies})
+ament_target_dependencies(publisher_class ${dependencies})
+ament_target_dependencies(subscriber_class ${dependencies})
+ament_target_dependencies(system ${dependencies})
 
 # export information to downstream packages
 ament_export_dependencies(
@@ -47,6 +53,9 @@ install(TARGETS
   simple
   logger
   logger_class
+  publisher_class
+  subscriber_class
+  system
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME}
