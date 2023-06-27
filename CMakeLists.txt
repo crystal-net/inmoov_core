@@ -22,6 +22,8 @@ find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 # find_package(node REQUIRED)
 
+# Create an environment variable called "dependencies" for which we will use for the target dependencies.
+# This will allow us to avoid retyping the dependencies for each class or executable.
 set (dependencies rclcpp std_msgs sensor_msgs)
 
 add_executable(simple src/simple.cpp)
@@ -31,8 +33,9 @@ add_executable(publisher_class src/publisher_class.cpp)
 add_executable(subscriber_class src/subscriber_class.cpp)
 add_executable(system src/system.cpp)
 
-# ament_target_dependencies(logger rclcpp std_msgs)
 
+# Set dependencies for each executable.  
+# We will be using the "dependencies" varialble we set above
 ament_target_dependencies(simple ${dependencies})
 ament_target_dependencies(logger ${dependencies})
 ament_target_dependencies(logger_class ${dependencies})
@@ -40,6 +43,8 @@ ament_target_dependencies(publisher_class ${dependencies})
 ament_target_dependencies(subscriber_class ${dependencies})
 ament_target_dependencies(system ${dependencies})
 
+
+# ???????
 # export information to downstream packages
 ament_export_dependencies(
   # rosidl_default_runtime 
@@ -49,6 +54,7 @@ ament_export_dependencies(
   # geometry_msgs
 )
 
+# Now we "install" the executables we created in the install folder at the root of the project
 install(TARGETS
   simple
   logger

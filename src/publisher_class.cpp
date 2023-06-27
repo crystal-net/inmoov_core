@@ -3,6 +3,7 @@
 // For std_msgs/msg/Int32
 #include "std_msgs/msg/int32.hpp"
 std_msgs::msg::Int32 msg_int32;
+
 // For sensor_msgs/msg/LaserScan
 #include "sensor_msgs/msg/laser_scan.hpp"
 sensor_msgs::msg::LaserScan msg_laserscan;
@@ -40,9 +41,21 @@ private:
 
 int main(int argc, char **argv)
 {
+    // First we call init which will allow the rclcpp library to setup and configure under the hood so to speak
     rclcpp::init(argc, argv);
+
+    // Nextr we create 'node' object.
+    // Note the auto type keyword
+    // Note also that we use std::make_shared to create a shared pointer.  
+    // TODO: ELABORATE ON THIS LATER
+    // TODO: I think the right syntax might be: auto node = std::make_shared<rclcpp::Node>("first_node");
+    //     Where we call a template rclcpp::Node and name it first_node
     auto node = std::make_shared<PublisherNode>();
+    
+    // This will run our 'node' continuously forever.
     rclcpp::spin(node);
+
+    // Run untill we receive a shutdown command.
     rclcpp::shutdown();
     return 0;
 }
