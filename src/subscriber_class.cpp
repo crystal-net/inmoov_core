@@ -6,8 +6,8 @@
 
 
 
-
-
+// For more information see:
+// https://www.youtube.com/watch?v=nEonCfJ6Gcc&list=PL1R5gSylLha0wxbvXIiNeEr12aoO_VX_8&index=3
 
 
 using std::placeholders::_1;
@@ -18,7 +18,9 @@ class MinimalSubscriber : public rclcpp::Node
     MinimalSubscriber() : Node("minimal_subscriber")
     {
       subscription_ = this->create_subscription<std_msgs::msg::Int32>(
-      "int_topic", 10, std::bind(&MinimalSubscriber::topic_callback, this, _1));
+      "int_topic",
+      rclcpp::SystemDefaultsQoS(),
+      std::bind(&MinimalSubscriber::topic_callback, this, std::placeholders::_1));
     }
 
 
