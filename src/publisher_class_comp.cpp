@@ -1,3 +1,7 @@
+// This is going to be the composible node version.
+// I am using a different file here because I don't know how well this is going to work
+// and I don't want to reinvent the wheel at this point but the tutorials I am following
+// are based on it and it is supposed to be the new standard.
 #include "rclcpp/rclcpp.hpp"
 
 // For std_msgs/msg/Int32
