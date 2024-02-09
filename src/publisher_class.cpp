@@ -69,7 +69,7 @@ private:
         message_.data += 1;
         publisher_->publish(message_);
         // RCLCPP_INFO(this->get_logger(), "Hello from publisher_class timer_callback function");
-        RCLCPP_INFO(this->get_logger(), "I just published ____ to the int_topic");
+        RCLCPP_INFO(this->get_logger(), "I just published %d to the int_topic",message_.data);
     }
     
     rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr publisher_;
